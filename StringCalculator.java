@@ -2,8 +2,7 @@ class StringCalculator
 {
 	
 	/*
-	 * 5. Calling Add with a negative number will throw an exception “negatives not allowed” -
-	 *    and the negative that was passed.
+	 * 6. If there are multiple negatives, show all of them in the exception message
 	 */ 
 	public int add(String numbers) 
 	{
@@ -24,7 +23,7 @@ class StringCalculator
 					num = Integer.parseInt(s);
 					if(num < 0)
 					{
-						throw new Exception("negatives not allowed");
+						throw new Exception("negatives not allowed "+num+" is Negative");
 					}
 					sum += num;		
 				} 
@@ -39,6 +38,6 @@ class StringCalculator
 
 	public static void main(String args[]) {
 		StringCalculator sc = new StringCalculator();
-		System.out.println(sc.add("//;\n-1;2;3;4"));
+		System.out.println(sc.add("//;\n-1;-2;3;-4"));
 	}
 }
