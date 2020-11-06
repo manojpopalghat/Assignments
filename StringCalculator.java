@@ -1,25 +1,34 @@
 class StringCalculator
 {
 	/*
-	 * 1) returns upto two numbers
+	 * 2) Allow the Add method to handle an unknown amount of numbers
 	 */
     public int add(String numbers)
     {
-    	
-    	if(numbers.length() == 0)
+    	int sum = 0;
+    	if(numbers.strip().length()==0)
     		return 0;
-    	else if(numbers.length() == 1)
-    		return Integer.parseInt(numbers);
     	else 
     	{
-    		int sum = Integer.parseInt(numbers.charAt(0)+"")+Integer.parseInt(numbers.charAt(2)+"");
-    		return sum;
-    	}    	
+    		String str[] = numbers.split(",");
+        	for(String s:str)
+        	{
+        		try 
+        		{
+        			sum += Integer.parseInt(s);
+        		}
+        		catch (Exception e) {
+    				System.out.println(e);
+    			}
+        	}  
+        	return sum;
+    	}
     }
+    
     
     public static void main(String args[])
     {
     	StringCalculator sc = new StringCalculator();
-    	System.out.println(sc.add("1,2"));
+    	System.out.println(sc.add("1,2,3,4,5"));
     }
 }
