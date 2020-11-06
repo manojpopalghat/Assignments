@@ -1,9 +1,7 @@
 class StringCalculator 
 {	
 	/*
-	 * Using TDD, Add a method to StringCalculator called public int
-	 * GetCalledCount() that returns how many times Add() was invoked. Remember -
-	 * Start with a failing (or even non compiling) test.
+	 *  9. Numbers bigger than 1000 should be ignored, for example: 2 + 1001 == 2 
 	 */
 	public static int count = 0;
 	
@@ -34,7 +32,8 @@ class StringCalculator
 					{
 						throw new Exception("negatives not allowed "+num+" is Negative");
 					}
-					sum += num;		
+					if(num <= 1000)
+						sum += num;		
 				} 
 				catch (Exception e) 
 				{
@@ -47,8 +46,7 @@ class StringCalculator
 
 	public static void main(String args[]) {
 		StringCalculator sc = new StringCalculator();
-		System.out.println(sc.add("//;\n-1;-2;3;-4"));
-		System.out.println(sc.add("//#\n1#2#-3#4"));
-		System.out.println("add method called "+sc.GetCalledCount()+" times");
+		System.out.println(sc.add("//;\n2;3;1001"));
+		
 	}
 }
