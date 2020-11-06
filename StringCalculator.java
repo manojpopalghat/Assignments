@@ -3,7 +3,7 @@ class StringCalculator
 	/*
 	 * 1) returns upto two numbers
 	 */
-    public int Add(String numbers)
+    public int add(String numbers)
     {
     	
     	if(numbers.length() == 0)
@@ -20,6 +20,6 @@ class StringCalculator
     public static void main(String args[])
     {
     	StringCalculator sc = new StringCalculator();
-    	System.out.println(sc.Add("1,2"));
+    	System.out.println(sc.add("1,2"));
     }
 }
