@@ -3,8 +3,8 @@ import java.util.Iterator;
 class StringCalculator 
 {	
 	/*
-	 * 11. Allow multiple delimiters like this: “//[delim1][delim2]\n” for example
-	 * “//[*][%]\n1*2%3” == 6.
+	 * 12.make sure you can also handle multiple delimiters with length longer than one char
+	 * for example “//[**][%%]\n1**2%%3” == 6.
 	 */	
 	public static int count = 0;
 	
@@ -19,9 +19,9 @@ class StringCalculator
 		int sum = 0;
 		int index1 = numbers.indexOf('[');
 		int index2 = numbers.lastIndexOf(']');
-		String newStr = numbers.substring(index1+1, index2); //getting string between first [ and last ] we get *][%][$
+		String newStr = numbers.substring(index1+1, index2); //getting string between first [ and last ] we get **][%%][$$
 		
-		String delimArr[] = newStr.split("]["); //removing ][ we get *,%,$
+		String delimArr[] = newStr.split("]["); //removing ][ we get **,%%,$$
 		int beginIndex = numbers.indexOf('\n')+1;
 		numbers = numbers.substring(beginIndex);
 		for(String delim : delimArr)
@@ -52,6 +52,6 @@ class StringCalculator
 	public static void main(String args[])
 	{
 		StringCalculator sc = new StringCalculator();
-		System.out.println(sc.add("//[$][#]\n1$2#3"));
+		System.out.println(sc.add("//[**][%%]\n1**2%%3"));
 	}
 }
