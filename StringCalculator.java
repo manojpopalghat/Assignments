@@ -1,11 +1,20 @@
 class StringCalculator 
-{
-	
+{	
 	/*
-	 * 6. If there are multiple negatives, show all of them in the exception message
-	 */ 
+	 * Using TDD, Add a method to StringCalculator called public int
+	 * GetCalledCount() that returns how many times Add() was invoked. Remember -
+	 * Start with a failing (or even non compiling) test.
+	 */
+	public static int count = 0;
+	
+	public int GetCalledCount()
+	{
+		return count;
+	}
+	
 	public int add(String numbers) 
 	{
+		count++;
 		int sum = 0;
 		char delimiter = numbers.charAt(2);
 		if (numbers.strip().length() <= 4)
@@ -39,5 +48,7 @@ class StringCalculator
 	public static void main(String args[]) {
 		StringCalculator sc = new StringCalculator();
 		System.out.println(sc.add("//;\n-1;-2;3;-4"));
+		System.out.println(sc.add("//#\n1#2#-3#4"));
+		System.out.println("add method called "+sc.GetCalledCount()+" times");
 	}
 }
