@@ -1,22 +1,35 @@
-class StringCalculator {
+class StringCalculator 
+{
 	
 	/*
-	 * 4. Support different delimiters
-	 * for example “//;\n1;2” == 3
+	 * 5. Calling Add with a negative number will throw an exception “negatives not allowed” -
+	 *    and the negative that was passed.
 	 */ 
-	public int add(String numbers) {
+	public int add(String numbers) 
+	{
 		int sum = 0;
 		char delimiter = numbers.charAt(2);
-		if (numbers.strip().length() < 4)
+		if (numbers.strip().length() <= 4)
 			return 0;
-		else {
+		else 
+		{
 			char c;
-			for (int i = 4; i < numbers.length(); i++) {
-				try {
-					c = numbers.charAt(i);
-					if (c != delimiter)
-						sum += Integer.parseInt(numbers.charAt(i) + "");
-				} catch (Exception e) {
+			int num;
+			String newNumbers = numbers.substring(4);
+			String str[] = newNumbers.split(delimiter+"");
+			for (String s:str) 
+			{
+				try 
+				{
+					num = Integer.parseInt(s);
+					if(num < 0)
+					{
+						throw new Exception("negatives not allowed");
+					}
+					sum += num;		
+				} 
+				catch (Exception e) 
+				{
 					System.out.println(e);
 				}
 			}
@@ -26,6 +39,6 @@ class StringCalculator {
 
 	public static void main(String args[]) {
 		StringCalculator sc = new StringCalculator();
-		System.out.println(sc.add("//;\n1;2;3;4"));
+		System.out.println(sc.add("//;\n-1;2;3;4"));
 	}
 }
