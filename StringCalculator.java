@@ -1,7 +1,7 @@
 class StringCalculator
 {
 	/*
-	 * 2) Allow the Add method to handle an unknown amount of numbers
+	 * 3. Allow the Add method to handle new lines between numbers (instead of commas).
 	 */
     public int add(String numbers)
     {
@@ -10,17 +10,19 @@ class StringCalculator
     		return 0;
     	else 
     	{
-    		String str[] = numbers.split(",");
-        	for(String s:str)
-        	{
-        		try 
+    		char c;
+    		for(int i=0;i<numbers.length();i++)
+    		{
+    			try 
         		{
-        			sum += Integer.parseInt(s);
+    				c = numbers.charAt(i);
+        			if(c != '\n' && c != ',')
+        				sum += Integer.parseInt(numbers.charAt(i)+"");
         		}
         		catch (Exception e) {
     				System.out.println(e);
     			}
-        	}  
+    		}
         	return sum;
     	}
     }
@@ -29,6 +31,6 @@ class StringCalculator
     public static void main(String args[])
     {
     	StringCalculator sc = new StringCalculator();
-    	System.out.println(sc.add("1,2,3,4,5"));
+    	System.out.println(sc.add("1\n2,3"));
     }
 }
